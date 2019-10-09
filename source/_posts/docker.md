@@ -3,9 +3,24 @@ title: docker
 date: 2019-10-09 15:31:54
 tags:
 ---
-Docker是一个开源的应用容器引擎，让开发者可以打包他们的应用一级依赖到一个可移植的镜像中。
+Docker是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中。
 可以统一我们的开发测试发布环境，可以快速搭建我们所需要的环境（结合 docker compose）
 Docker Hub是一个云端服务，可以用它共享应用。（类似Github）
+## Docker优势
+1. 更高效的利用系统资源，榨取物理机的资源
+2. 更快速的启动
+3. 一致的运行环境
+4. 持续交付和部署
+5. 更轻松的迁移、维护和扩展
+
+## 镜像和容器
+### 镜像
+镜像是一个特殊的文件系统，除了提供容器运行时所需要的程序、库、资源、配置等文件外，还包括了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。奖项不包含任何动态数据，其内容在构建之后也不会被改变。
+### 容器
+镜像（Image）和容器（Container）的关系，就像是面向对象的类和实例一样。
+镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。
+容器的实质是进程，但和宿主的进程不同，容器进程运行于自己的独立的命名空间，运行在一个隔离环境。
+
 ## Dokcer 常用命令
 1. 获取镜像
 ``` bash
@@ -84,4 +99,54 @@ docker push heshuai326/server:latest
 
 docker pull heshuai326/server:latest
 docker run -p 3000:3000 heshuai326/server:latest
+```
+
+## docker-compose
+### 什么是docker-compose
+docker-compose是一个用户定义和运行多个容器的Docker应用程序。在Compose中你可以使用YAML文件来配置你的应用服务。
+然后只需要一个简单的命令就可以创建并启动你配置的所有服务。
+### 启动命令
+```bash
+docker-compose up -d
+```
+-d参数是后台进行启动
+### mysql脚本
+```bash
+version: '3.3'
+services:
+  mysql:
+    image: mysql:5.6
+    volumes:
+      - /root/data/mysql:/var/lib/mysql
+      - ./conf/:/etc/mysql/conf.d
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=db
+      - MYSQL_ROOT_PASSWORD=123456
+volumes:
+  mysql:
+```
+### mongo和redis脚本
+```bash
+version: '3'
+services:
+  mongo:
+    image: mongo:4.0.0
+    command: --bind_ip_all
+    restart: always
+    ports:
+    - "27017:27017"
+    volumes:
+    - "mongo:/var/mongo"
+  redis:
+    image: redis:4.0.8
+    restart: always
+    ports:
+    - "6379:6379"
+    volumes:
+    - "redis:/var/redis"
+volumes:
+  mongo:
+  redis:
 ```
