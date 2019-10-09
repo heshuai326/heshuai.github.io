@@ -5,13 +5,13 @@ tags:
 ---
 Docker是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中。
 可以统一我们的开发测试发布环境，可以快速搭建我们所需要的环境（结合 docker compose）
+![docker是集装箱的意思](https://gss3.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=05f46e0580d4b31cf03c93bdbfed4042/2cf5e0fe9925bc31137974de55df8db1cb13704b.jpg)
 Docker Hub是一个云端服务，可以用它共享应用。（类似Github）
 ## Docker优势
-1. 更高效的利用系统资源，榨取物理机的资源
-2. 更快速的启动
-3. 一致的运行环境
-4. 持续交付和部署
-5. 更轻松的迁移、维护和扩展
+1. 更高效的利用系统资源，榨取物理机的资源（节约成本）
+2. 沙箱机制（安全性）
+3. 持续交付和部署（敏捷）
+4. 更轻松的迁移、维护和扩展（可移植性）
 
 ## 镜像和容器
 ### 镜像
@@ -150,3 +150,8 @@ volumes:
   mongo:
   redis:
 ```
+
+## 参考链接
+[docker从入门到实践](https://yeasy.gitbooks.io/docker_practice/introduction/what.html)
+[nodejs技术栈docker入门到实践](https://mp.weixin.qq.com/s/S7ksqF8z4SYJvcG1DOupNA)
+[nodejs技术栈Node.js服务 Docker 容器化应用实践](https://mp.weixin.qq.com/s/ZUw_qLk3m77ATkYXpfP08A)
