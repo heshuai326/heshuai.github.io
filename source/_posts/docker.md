@@ -1,7 +1,8 @@
 ---
 title: docker
 date: 2019-10-09 15:31:54
-tags:
+tags: 运维
+categories: docker
 ---
 Docker是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中。
 可以统一我们的开发测试发布环境，可以快速搭建我们所需要的环境（结合 docker compose）
