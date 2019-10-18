@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>Hexo | blog</title>
-  <meta name="keywords" content>
-  <meta name="description" content="Hexo | blog">
+  <title>buffer | blog</title>
+  <meta name="keywords" content=" 开发 ">
+  <meta name="description" content="buffer | blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="文章分类">
@@ -280,19 +280,31 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-buffer" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Hexo</h1>
+        <h1 class="article-title">buffer</h1>
     
     <div class="article-meta">
         
         
         
+        <span class="book">
+            
+                <a href="javascript:" data-rel="node.js">node.js</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color3">开发</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-10-09 15:31:25'>2019-10-08 16:26</time>
+        创建时间:<time class="date" title='更新时间: 2019-10-18 17:48:58'>2019-10-18 16:14</time>
         
     </div>
     <div class="article-meta">
@@ -314,7 +326,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#快速开始"><span class="toc-text">快速开始</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建一个新的文章"><span class="toc-text">创建一个新的文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行服务"><span class="toc-text">运行服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成静态文件"><span class="toc-text">生成静态文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#推送到远程仓库"><span class="toc-text">推送到远程仓库</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#二进制"><span class="toc-text">二进制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stream"><span class="toc-text">Stream</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Buffer的使用场景"><span class="toc-text">Buffer的使用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Buffer的创建"><span class="toc-text">Buffer的创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串与Buffer的相互转换"><span class="toc-text">字符串与Buffer的相互转换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Buffer（缓冲）VS-Cache（缓存）"><span class="toc-text">Buffer（缓冲）VS Cache（缓存）</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -330,18 +342,76 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="noopener">documentation</a> for more info. </p>
-<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="创建一个新的文章"><a href="#创建一个新的文章" class="headerlink" title="创建一个新的文章"></a>创建一个新的文章</h3><pre><code class="bash">$ hexo new &quot;post&quot;</code></pre>
-<p>More info: <a href="https://hexo.io/zh-cn/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="运行服务"><a href="#运行服务" class="headerlink" title="运行服务"></a>运行服务</h3><pre><code class="bash">$ hexo server
-$ hexo s</code></pre>
-<p>More info: <a href="https://hexo.io/zh-cn/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><pre><code class="bash">$ hexo generate
-$ hexo g</code></pre>
-<p>More info: <a href="https://hexo.io/zh-cn/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="推送到远程仓库"><a href="#推送到远程仓库" class="headerlink" title="推送到远程仓库"></a>推送到远程仓库</h3><pre><code class="bash">$ hexo deploy
-$ hexo d</code></pre>
-<p>More info: <a href="https://hexo.io/zh-cn/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <ol>
+<li>在引入TypeArray之前，JavaScript语言没有用于读取或操作的二进制数据流的机制。Buffer类是作为Node.jsAPI的一部分引入的，用于在TCP流、文件系统操作、以及其他上下文中与八位字节流进行交互。<a href="http://nodejs.cn/api/buffer.html" target="_blank" rel="noopener">Node.js官网对Buffer的描述</a></li>
+<li>Buffer代表一个数据缓存区，用于存储二进制数据，俗称字节流，是I/O传输时常用的处理方式。相较于字符串，Buffer可以免去编码解码的过程，节省CPU成本。</li>
+</ol>
+<h2 id="二进制"><a href="#二进制" class="headerlink" title="二进制"></a>二进制</h2><p>在计算机的世界里，只有0和1，也就是二进制。<br>任何计算机可以识别或者存储的数据都是二进制。<br><img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1337836810,3632387218&fm=26&gp=0.jpg" alt="二进制"></p>
+<h2 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h2><ol>
+<li><p>stream不是Node.js独有的概念，而是操作系统的最基本方式，Node.js有API支持这种方式</p>
+</li>
+<li><p>stream是对buffer对象的高级封装，其底层还是buffer。</p>
+</li>
+<li><p>流是一个抽象的数据接口，是EventEmitter对象的一个实例，以Buffer为单位。</p>
+</li>
+<li><p>http的请求、响应，stdut（标准输出）等。<br><img src="https://www.runoob.com/wp-content/uploads/2015/09/bVcla61" alt="流的形象表示"></p>
+<h2 id="Buffer的使用场景"><a href="#Buffer的使用场景" class="headerlink" title="Buffer的使用场景"></a>Buffer的使用场景</h2></li>
+<li><p>网络数据<br>在使用net或http模块来接收<code>网络数据</code>时，可用buffer作为数据结构进行传输，即<code>data</code>事件的参数<br>接收微信服务器响应的代码片段，接收所有的buffer转换未string<br>Buffer与字符串间转换会产生极小的性能损耗</p>
+<pre><code>if (sha === signature) {
+   let buf = &#39;&#39;;
+   req.setEncoding(&#39;utf8&#39;);
+   req.on(&#39;data&#39;, (chunk) =&gt; {
+       buf += chunk; // 拼接的过程中有隐私的转换，相当于调用toString()方法
+   });
+   req.on(&#39;end&#39;, async () =&gt; {
+     const content = await this.appService.xmlToJson(buf);
+     this.appService.sendMsg(content, query.openid);
+     res.status(HttpStatus.OK).json({body: &#39;success&#39;});
+   });
+ } else {
+   throw new HttpException(&#39;Forbidden&#39;, HttpStatus.FORBIDDEN);
+ }</code></pre></li>
+<li><p>大文件<br>用于<code>大文件</code>的读取和写入，以前fs读取的内容是string，后来都改用Buffer，在大文件读取上，性能和内存上有明显的又是。</p>
+<pre><code class="bash">const fs = require(&#39;fs&#39;)
+const inputStream = fs.createReadStream(&#39;input.txt&#39;)
+const outputStream = fs.createWriteStream(&#39;output.txt&#39;)
+inputStream.pipe(outputStream) // 管道读写</code></pre>
+</li>
+<li><p>转码、进制转换</p>
+</li>
+<li><p>数据结构<br>用作<code>数据结构</code>，处理二进制数据，也可以处理字符编码</p>
+</li>
+</ol>
+<h3 id="Buffer的创建"><a href="#Buffer的创建" class="headerlink" title="Buffer的创建"></a>Buffer的创建</h3><pre><code>new Buffer() // 废弃的API，不推荐
+
+Buffer.from()
+Buffer.alloc()
+Buffer.allocUnsafe() //泄漏内存，不安全
+Buffer.allocUnsafeSlow() // 泄漏内存，不安全</code></pre><h3 id="字符串与Buffer的相互转换"><a href="#字符串与Buffer的相互转换" class="headerlink" title="字符串与Buffer的相互转换"></a>字符串与Buffer的相互转换</h3><ol>
+<li><p>字符串转Buffer<br>Buffer.from()不传递第二个参数会按照UTF-8格式进行转换</p>
+<pre><code class="bash">Buffer.from(&#39;Node.js&#39;, &#39;UTF-8&#39;)</code></pre>
+</li>
+<li><p>Buffer转字符串<br>Node.js中有一个字符串解码<code>类</code>,即string_decoder(字符串解码器)，StringDecoder可以将缓存Buffer解码未字符串，StringDecoder是buffer.toString()方法的简单实现。</p>
+<pre><code class="bash">declare module &quot;string_decoder&quot; {
+ class StringDecoder {
+     constructor(encoding?: string);
+     write(buffer: Buffer): string;
+     end(buffer?: Buffer): string;
+ }
+}</code></pre>
+</li>
+</ol>
+<pre><code class="bash">const { StringDecoder } = require(&#39;string_decoder&#39;)
+
+const stringDecoder = new StringDecoder()
+const buf = Buffer.from(&#39;Node.js&#39;, &#39;UTF-8&#39;)
+stringDecoder.write(buf)
+
+buf.toString()</code></pre>
+<h2 id="Buffer（缓冲）VS-Cache（缓存）"><a href="#Buffer（缓冲）VS-Cache（缓存）" class="headerlink" title="Buffer（缓冲）VS Cache（缓存）"></a>Buffer（缓冲）VS Cache（缓存）</h2><ol>
+<li>缓存（Buffer）是用于处理二进制流数据，将数据缓冲起来，它是临时性的，对于流数据，会采用缓冲区将数据临时存储起来，等缓冲到一定的大小之后再存入硬盘中。视频播放就是一个经典的例子，有时你会看到一个缓冲的图标，这意味着此时这一组缓冲区并未填满，当数据到达填满缓冲区并且被处理之后，此时缓冲图标消失，你可以看到一些图像数据</li>
+<li>缓存（Cache）我可以看作是一个中间层，他可以额是永久性的将热点数据进行缓存，使得访问速度更快，例如我们通过Memore、Redis等将数据从硬盘或其他第三间方接口中请求过来进行缓存，目的就是将数据于内存的缓存区内，这样对同一个资源进行访问，速度会更快，也是性能优化的一个重要点。浏览器中的缓存目的也是为了不用重复去加载相同的资源，进行的优化措施。</li>
+</ol>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 2313843501@qq.com </span>
@@ -355,12 +425,12 @@ $ hexo d</code></pre>
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>Hexo</p>
+    <p><span class="copy-title">文章标题:</span>buffer</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="heshuai">heshuai</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-10-08, 16:26:06</p>
-    <p><span class="copy-title">最后更新:</span>2019-10-09, 15:31:25</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/10/08/hello-world/" title="Hexo">https://heshuai326.github.io/2019/10/08/hello-world/</a>
+    <p><span class="copy-title">发布时间:</span>2019-10-18, 16:14:16</p>
+    <p><span class="copy-title">最后更新:</span>2019-10-18, 17:48:58</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/10/18/buffer/" title="buffer">https://heshuai326.github.io/2019/10/18/buffer/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
