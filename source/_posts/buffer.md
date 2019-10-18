@@ -17,6 +17,7 @@ categories: node.js
 3. 流是一个抽象的数据接口，是EventEmitter对象的一个实例，以Buffer为单位。
 4. http的请求、响应，stdut（标准输出）等。
 ![流的形象表示](https://www.runoob.com/wp-content/uploads/2015/09/bVcla61)
+
 ## Buffer的使用场景
 1. 网络数据
 在使用net或http模块来接收`网络数据`时，可用buffer作为数据结构进行传输，即`data`事件的参数
