@@ -244,12 +244,12 @@
             <span class="post-date" title="2019-10-09 15:31:54">2019/10/09</span>
         </a>
         
-        <a  class="node.js "
-           href="/2019/10/10/module/"
-           data-tag="开发"
+        <a  class=""
+           href="/2019/10/08/hello-world/"
+           data-tag=""
            data-author="" >
-            <span class="post-title" title="module">module</span>
-            <span class="post-date" title="2019-10-10 16:33:56">2019/10/10</span>
+            <span class="post-title" title="Hexo">Hexo</span>
+            <span class="post-date" title="2019-10-08 16:26:06">2019/10/08</span>
         </a>
         
         <a  class="ssr "
@@ -260,12 +260,12 @@
             <span class="post-date" title="2019-10-16 16:38:27">2019/10/16</span>
         </a>
         
-        <a  class=""
-           href="/2019/10/08/hello-world/"
-           data-tag=""
+        <a  class="node.js "
+           href="/2019/10/10/module/"
+           data-tag="开发"
            data-author="" >
-            <span class="post-title" title="Hexo">Hexo</span>
-            <span class="post-date" title="2019-10-08 16:26:06">2019/10/08</span>
+            <span class="post-title" title="module">module</span>
+            <span class="post-date" title="2019-10-10 16:33:56">2019/10/10</span>
         </a>
         
     </nav>
@@ -304,7 +304,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-10-18 17:48:58'>2019-10-18 16:14</time>
+        创建时间:<time class="date" title='更新时间: 2019-10-18 17:50:05'>2019-10-18 16:14</time>
         
     </div>
     <div class="article-meta">
@@ -348,14 +348,12 @@
 </ol>
 <h2 id="二进制"><a href="#二进制" class="headerlink" title="二进制"></a>二进制</h2><p>在计算机的世界里，只有0和1，也就是二进制。<br>任何计算机可以识别或者存储的数据都是二进制。<br><img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1337836810,3632387218&fm=26&gp=0.jpg" alt="二进制"></p>
 <h2 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h2><ol>
-<li><p>stream不是Node.js独有的概念，而是操作系统的最基本方式，Node.js有API支持这种方式</p>
-</li>
-<li><p>stream是对buffer对象的高级封装，其底层还是buffer。</p>
-</li>
-<li><p>流是一个抽象的数据接口，是EventEmitter对象的一个实例，以Buffer为单位。</p>
-</li>
-<li><p>http的请求、响应，stdut（标准输出）等。<br><img src="https://www.runoob.com/wp-content/uploads/2015/09/bVcla61" alt="流的形象表示"></p>
-<h2 id="Buffer的使用场景"><a href="#Buffer的使用场景" class="headerlink" title="Buffer的使用场景"></a>Buffer的使用场景</h2></li>
+<li>stream不是Node.js独有的概念，而是操作系统的最基本方式，Node.js有API支持这种方式</li>
+<li>stream是对buffer对象的高级封装，其底层还是buffer。</li>
+<li>流是一个抽象的数据接口，是EventEmitter对象的一个实例，以Buffer为单位。</li>
+<li>http的请求、响应，stdut（标准输出）等。<br><img src="https://www.runoob.com/wp-content/uploads/2015/09/bVcla61" alt="流的形象表示"></li>
+</ol>
+<h2 id="Buffer的使用场景"><a href="#Buffer的使用场景" class="headerlink" title="Buffer的使用场景"></a>Buffer的使用场景</h2><ol>
 <li><p>网络数据<br>在使用net或http模块来接收<code>网络数据</code>时，可用buffer作为数据结构进行传输，即<code>data</code>事件的参数<br>接收微信服务器响应的代码片段，接收所有的buffer转换未string<br>Buffer与字符串间转换会产生极小的性能损耗</p>
 <pre><code>if (sha === signature) {
    let buf = &#39;&#39;;
@@ -429,7 +427,7 @@ buf.toString()</code></pre>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="heshuai">heshuai</a></p>
     <p><span class="copy-title">发布时间:</span>2019-10-18, 16:14:16</p>
-    <p><span class="copy-title">最后更新:</span>2019-10-18, 17:48:58</p>
+    <p><span class="copy-title">最后更新:</span>2019-10-18, 17:50:05</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/10/18/buffer/" title="buffer">https://heshuai326.github.io/2019/10/18/buffer/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
