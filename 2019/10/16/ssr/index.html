@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>module | blog</title>
-  <meta name="keywords" content=" 开发 ">
-  <meta name="description" content="module | blog">
+  <title>ssr | blog</title>
+  <meta name="keywords" content=" 运维 ">
+  <meta name="description" content="ssr | blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="文章分类">
@@ -272,9 +272,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-module" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-ssr" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">module</h1>
+        <h1 class="article-title">ssr</h1>
     
     <div class="article-meta">
         
@@ -282,21 +282,21 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="node.js">node.js</a>
+                <a href="javascript:" data-rel="ssr">ssr</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color3">开发</a>
+            <a href="javascript:" class="color3">运维</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-10-10 17:26:31'>2019-10-10 16:33</time>
+        创建时间:<time class="date" title='更新时间: 2019-10-18 11:27:15'>2019-10-16 16:38</time>
         
     </div>
     <div class="article-meta">
@@ -318,7 +318,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CommonJs"><span class="toc-text">CommonJs</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#模块化的作用"><span class="toc-text">模块化的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#node的模块实现"><span class="toc-text">node的模块实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模块编译"><span class="toc-text">模块编译</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ES6模块"><span class="toc-text">ES6模块</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ES6模块和CommonJs模块的差异"><span class="toc-text">ES6模块和CommonJs模块的差异</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装pip"><span class="toc-text">安装pip</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Shadowsocks"><span class="toc-text">安装Shadowsocks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建配置文件"><span class="toc-text">创建配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试是否配置成功"><span class="toc-text">测试是否配置成功</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置Systemd管理Shadowsocks"><span class="toc-text">配置Systemd管理Shadowsocks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动命令"><span class="toc-text">启动命令</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -334,74 +334,34 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>java有类文件，Python有import机制，Ruby有require等，而Javascript 通过script标签引入代码的机制显得杂乱无章，语言自身毫无组织能力，人们不得不用命名空间的等方式人为的组织代码，以求达到安全易用的目的<br>《深入浅出Nodejs》–朴灵</p>
-</blockquote>
-<h1 id="CommonJs"><a href="#CommonJs" class="headerlink" title="CommonJs"></a>CommonJs</h1><h2 id="模块化的作用"><a href="#模块化的作用" class="headerlink" title="模块化的作用"></a>模块化的作用</h2><ol>
-<li>代码的复工和工程解耦</li>
-<li>全局环境下的变量命名冲突</li>
-<li>解析依赖，管理依赖</li>
-</ol>
-<h2 id="node的模块实现"><a href="#node的模块实现" class="headerlink" title="node的模块实现"></a>node的模块实现</h2><ul>
-<li>路径分析</li>
-<li>文件定位</li>
-<li>编译执行<br><img src="https://raw.githubusercontent.com/Qbian61/Qbian61.github.io/master/resource/nodejs-module/nodejs-require.jpg" alt="模块加载机制"></li>
-</ul>
-<ol>
-<li>核心模块：fs、http等，就像jdk的核心类<br>核心模块在编译过程中编译成了二进制文件。在进程启动时核心模块就被加载进内存中，所以后面2个步骤就可以省略，并且在路径分析中优先级最高（除了缓存区）</li>
-<li>文件模块：用户编写模块</li>
-</ol>
-<h2 id="模块编译"><a href="#模块编译" class="headerlink" title="模块编译"></a>模块编译</h2><p>在node中每个js文件都被是为独立的模块</p>
-<ul>
-<li>js文件：通过模块<code>同步</code>读取文件后编译执行</li>
-<li>json文件：通过fs模块<code>同步</code>读取文件后，用JSON.parse()解析返回结果</li>
-<li>node文件：这是用C/C++编写的扩展文件，通过dlopen()方法加载最后编译生成的文件</li>
-</ul>
-<p>1.每个编译成功的模块都会将其文件路径做为索引缓存在Module.cache对象上，以提高二次引用的性能<br>2.在编译的过程中，node对获取的js文件内容进行了封装</p>
-<pre><code class="bash">(function(export, require, module, __filename, __dirname){
-// 模块代码实际在这里
-})</code></pre>
-<p>这样在模块之间就进行了作用域的隔离，保持了顶层的变量在模块范围内，而不是全局对象<br>提供了一些看似全局但实际上是模块特定的变量<br>实现者可以用鱼从模块中导出值得module和exports对象<br>包含模块绝对文件名和目录路径的快捷变量<strong>filename和</strong>dirname</p>
-<h1 id="ES6模块"><a href="#ES6模块" class="headerlink" title="ES6模块"></a>ES6模块</h1><p>在ES6之前，社区指定了一些模块方案CommonJs（服务端）AMD（浏览器），ES6模块成为浏览器和服务器通用的模块方案</p>
-<h2 id="ES6模块和CommonJs模块的差异"><a href="#ES6模块和CommonJs模块的差异" class="headerlink" title="ES6模块和CommonJs模块的差异"></a>ES6模块和CommonJs模块的差异</h2><ul>
-<li>CommonJs模块输出的是一个值拷贝，ES6模块输出的是值引用</li>
-<li>CommonJs模块是运行时加载，ES6模块是编译时的输出接口</li>
-</ul>
-<pre><code class="bash">let firstName = &#39;Michael&#39;
-let lastName = &#39;Jackson&#39;
+        <p>ubuntu16.04环境下安装服务端Shadowsocks</p>
+<h2 id="安装pip"><a href="#安装pip" class="headerlink" title="安装pip"></a>安装pip</h2><p>安装pip3</p>
+<pre><code class="bash">sudo apt install python3-pip</code></pre>
+<h2 id="安装Shadowsocks"><a href="#安装Shadowsocks" class="headerlink" title="安装Shadowsocks"></a>安装Shadowsocks</h2><pre><code>pip3 install https://github.com/shadowsocks/shadowsocks/archive/master.zip
+sudo ssserver --version</code></pre><h2 id="创建配置文件"><a href="#创建配置文件" class="headerlink" title="创建配置文件"></a>创建配置文件</h2><pre><code>{
+    &quot;server&quot;:&quot;::&quot;,
+    &quot;server_port&quot;:8388,
+    &quot;local_address&quot;: &quot;127.0.0.1&quot;,
+    &quot;local_port&quot;:1080,
+    &quot;password&quot;:&quot;mypassword&quot;,
+    &quot;timeout&quot;:300,
+    &quot;method&quot;:&quot;aes-256-cfb&quot;,
+    &quot;fast_open&quot;: false
+}</code></pre><h2 id="测试是否配置成功"><a href="#测试是否配置成功" class="headerlink" title="测试是否配置成功"></a>测试是否配置成功</h2><pre><code>ssserver -c /mnt/shadowsocks.json</code></pre><h2 id="配置Systemd管理Shadowsocks"><a href="#配置Systemd管理Shadowsocks" class="headerlink" title="配置Systemd管理Shadowsocks"></a>配置Systemd管理Shadowsocks</h2><pre><code class="bash">[Unit]
+Description=Shadowsocks Server
+After=network.target
 
-let year = 1958
+[Service]
+ExecStart=/home/ubuntu/.local/bin/ssserver -c /mnt/shadowsocks.json
+Restart=on-abort
 
-// 导出变量
-export { firstName, lastName, year}
-
-
-// 导出函数或类(Class)
-export function multiply(x, y) {
-    return x * y
-}
-
-// 为了给用户方便，为模块指定默认输出
-export default function fn() {
-
-}</code></pre>
-<pre><code class="bash">/**
- * commonjs规范 (服务端)
- * AMD         （浏览器）
- */ 
-// const { stat, exists, readFile } = require(&#39;fs&#39;)
-
-// ES6 在编译时就完成模块编译，效率要比Common模块高
-// const {stat, exists, readFile } from &#39;fs&#39;
-
-
-//使用按时关键字将输入的变量重命名
-import { lastName as surname}  from &#39;./export&#39;
-
-// default的时候不需要写{}
-import fn from &#39;./export&#39;
-
-import * as obj  from &#39;./export&#39;</code></pre>
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<h2 id="启动命令"><a href="#启动命令" class="headerlink" title="启动命令"></a>启动命令</h2><pre><code class="bash">sudo systemctl start shadowsocks-server
+sudo systemctl restart shadowsocks-server
+sudo systemctl daemon-reload
+systemctl status shadowsocks-server.service</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 2313843501@qq.com </span>
@@ -415,12 +375,12 @@ import * as obj  from &#39;./export&#39;</code></pre>
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>module</p>
+    <p><span class="copy-title">文章标题:</span>ssr</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="heshuai">heshuai</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-10-10, 16:33:56</p>
-    <p><span class="copy-title">最后更新:</span>2019-10-10, 17:26:31</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/10/10/module/" title="module">https://heshuai326.github.io/2019/10/10/module/</a>
+    <p><span class="copy-title">发布时间:</span>2019-10-16, 16:38:27</p>
+    <p><span class="copy-title">最后更新:</span>2019-10-18, 11:27:15</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/10/16/ssr/" title="ssr">https://heshuai326.github.io/2019/10/16/ssr/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
