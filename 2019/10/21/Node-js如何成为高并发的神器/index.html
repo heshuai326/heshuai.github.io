@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>docker | blog</title>
-  <meta name="keywords" content=" 运维 ">
-  <meta name="description" content="docker | blog">
+  <title>Node.js如何成为高并发的神器 | blog</title>
+  <meta name="keywords" content=" 开发 ">
+  <meta name="description" content="Node.js如何成为高并发的神器 | blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="文章分类">
@@ -288,9 +288,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-docker" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Node-js如何成为高并发的神器" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">docker</h1>
+        <h1 class="article-title">Node.js如何成为高并发的神器</h1>
     
     <div class="article-meta">
         
@@ -298,21 +298,21 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="docker">docker</a>
+                <a href="javascript:" data-rel="node.js">node.js</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color3">运维</a>
+            <a href="javascript:" class="color3">开发</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-10-09 17:38:40'>2019-10-09 15:31</time>
+        创建时间:<time class="date" title='更新时间: 2019-10-21 15:00:34'>2019-10-21 10:01</time>
         
     </div>
     <div class="article-meta">
@@ -334,7 +334,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker优势"><span class="toc-text">Docker优势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#镜像和容器"><span class="toc-text">镜像和容器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#镜像"><span class="toc-text">镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器"><span class="toc-text">容器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dokcer-常用命令"><span class="toc-text">Dokcer 常用命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构建node镜像案例"><span class="toc-text">构建node镜像案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#构建Dockerfile"><span class="toc-text">构建Dockerfile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构建和部署"><span class="toc-text">构建和部署</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-compose"><span class="toc-text">docker-compose</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是docker-compose"><span class="toc-text">什么是docker-compose</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动命令"><span class="toc-text">启动命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql脚本"><span class="toc-text">mysql脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mongo和redis脚本"><span class="toc-text">mongo和redis脚本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考链接"><span class="toc-text">参考链接</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#单线程"><span class="toc-text">单线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#异常处理"><span class="toc-text">异常处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#子进程"><span class="toc-text">子进程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#process"><span class="toc-text">process</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#子进程的实现"><span class="toc-text">子进程的实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集群"><span class="toc-text">集群</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cluster模块"><span class="toc-text">cluster模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cluster的两种分发连接方法"><span class="toc-text">cluster的两种分发连接方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PM2"><span class="toc-text">PM2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多线程"><span class="toc-text">多线程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#thread"><span class="toc-text">thread</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#真正的多线程——node-threads-a-gogo"><span class="toc-text">真正的多线程——node-threads-a-gogo</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库"><span class="toc-text">数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis"><span class="toc-text">Redis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他数据库"><span class="toc-text">其他数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#I-O密集型和CPU密集型"><span class="toc-text">I/O密集型和CPU密集型</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -350,107 +350,103 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Docker是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中。<br>可以统一我们的开发测试发布环境，可以快速搭建我们所需要的环境（结合 docker compose）<br><img src="https://gss3.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=05f46e0580d4b31cf03c93bdbfed4042/2cf5e0fe9925bc31137974de55df8db1cb13704b.jpg" alt="docker是集装箱的意思"><br>Docker Hub是一个云端服务，可以用它共享应用。（类似Github）</p>
-<h2 id="Docker优势"><a href="#Docker优势" class="headerlink" title="Docker优势"></a>Docker优势</h2><ol>
-<li>更高效的利用系统资源，榨取物理机的资源（节约成本）</li>
-<li>沙箱机制（安全性）</li>
-<li>持续交付和部署（敏捷）</li>
-<li>更轻松的迁移、维护和扩展（可移植性）</li>
+        <p>Javascript是一种单线程的，不像Java等其他多线程可以创建多个线程并行执行。在面对高并发的场景下，Node.js那不是很脆弱么？</p>
+<h2 id="单线程"><a href="#单线程" class="headerlink" title="单线程"></a>单线程</h2><ol>
+<li>事件轮询（事件驱动）和异步I/O（非阻塞I/O）<br>在事件驱动模型中，每个I/O工作被添加到事件队列中，线程循环地处理队列上得工作任务，当执行过程中遇到阻塞（读取文件、查询数据库）时，线程不会停下来等待结果，而是留下一个处理结果得回调函数，转而继续执行队列中的下一个任务。这个传递到队列中的回调函数在阻塞任务运行结束后才被线程调用。<br><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1571633472182&di=e54516920fb269a9d2b2721836ce394c&imgtype=0&src=http%3A%2F%2Fimg0.coin163.com%2F48%2F09%2Fby2mie.png" alt></li>
+<li>Javascript是单线程的但是不管是浏览器还是Node.js环境都是多线程的。<br>Node.js在接受任务的时候是多线程的，无需切换进程/线程，非常高效，但它在执行具体任务的时候是多线程的。<br>Libuv由事件循环和线程池组成，负责所有的I/O任务的分发与执行。<br><img src="https://images2018.cnblogs.com/blog/1136599/201805/1136599-20180524145348812-64839149.png" alt></li>
+<li>Nginx和Apache一样，是一个HTTP服务器，它可以完胜Apache不是用的带有阻塞的多线程方式，而是带有异步I/O的事件轮询，它因此变成了响应能力更强的解决方案。</li>
 </ol>
-<h2 id="镜像和容器"><a href="#镜像和容器" class="headerlink" title="镜像和容器"></a>镜像和容器</h2><h3 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h3><p>镜像是一个特殊的文件系统，除了提供容器运行时所需要的程序、库、资源、配置等文件外，还包括了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。奖项不包含任何动态数据，其内容在构建之后也不会被改变。</p>
-<h3 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h3><p>镜像（Image）和容器（Container）的关系，就像是面向对象的类和实例一样。<br>镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。<br>容器的实质是进程，但和宿主的进程不同，容器进程运行于自己的独立的命名空间，运行在一个隔离环境。</p>
-<h2 id="Dokcer-常用命令"><a href="#Dokcer-常用命令" class="headerlink" title="Dokcer 常用命令"></a>Dokcer 常用命令</h2><ol>
-<li>获取镜像<pre><code class="bash">$ sudo docker pull NAME[:TAG]
-$ sudo docker pull centos:latest</code></pre>
-tag不添加默认为latest</li>
-<li>启动Container<pre><code class="bash">$ sudo docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
-$ sudo docker run -t -i centos /bin/bash</code></pre>
-使用容器的bash</li>
-<li>查看镜像列表，列出本地的所有images<pre><code class="bash">$ sudo docker pull NAME[:TAG]
-$ sudo docker pull centos:latest</code></pre>
-</li>
-<li>查看容器列表，列出创建过的所有Container<pre><code class="bash">$ sudo docker ps [OPTIONS]
-$ sudo docker ps -a</code></pre>
-</li>
-<li>删除镜像，从本地删除一个已经下载的镜像<pre><code class="bash">$ sudo docker rmi IMAGE [IMAGE...]
-$ sudo docker rmi cenos:latest</code></pre>
-</li>
-<li>移除一个或多个容器实例<pre><code class="bash">$ sudo docker rm [OPTIONS] CONTAINER [CONTAINER...]
-$ sudo docker rm sudo docker ps -aq（移除所有未运行的容器）</code></pre>
-</li>
-<li>停止一个正在运行的容器<pre><code class="bash">$ sudo docker kill [OPTIONS] CONTAINER [CONTAINER...]
-$ sudo docker kill 026e</code></pre>
-</li>
-<li>重启一个正在运行的容器<pre><code class="bash">$ sudo docker restart [OPTIONS] CONTAINER [CONTAINER...]
-$ sudo docker restart 026e</code></pre>
-</li>
-<li>启动一个已经停止的容器<pre><code class="bash">$ sudo docker start [OPTIONS] CONTAINER [CONTAINER...]
-$ sudo docker start 026e</code></pre>
-</li>
-</ol>
-<h2 id="构建node镜像案例"><a href="#构建node镜像案例" class="headerlink" title="构建node镜像案例"></a>构建node镜像案例</h2><h3 id="构建Dockerfile"><a href="#构建Dockerfile" class="headerlink" title="构建Dockerfile"></a>构建Dockerfile</h3><pre><code class="bash">FROM node:10.0-alpine 
-
-RUN npm install pm2 -g --registry=https://registry.npm.taobao.org
-RUN mkdir -p  /user/src/server/
-WORKDIR /user/src/server/
-COPY package.json /user/src/server/package.json
-COPY ./dist /user/src/server/dist
-RUN cd /user/src/server/
-RUN npm i --production --registry=https://registry.npm.taobao.org
-
-EXPOSE 3000
-CMD pm2 start dist/src/main.js &amp;&amp; pm2 log</code></pre>
+<h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2><h2 id="子进程"><a href="#子进程" class="headerlink" title="子进程"></a>子进程</h2><h3 id="process"><a href="#process" class="headerlink" title="process"></a>process</h3><p>process对象是一个全局变量，它提供有关当前Node.js进程的信息并对其进行控制，无须引用，在任意位置都可以使用。</p>
 <ol>
-<li>Alpine是一个很小的Linux发行版本，可以大幅度减小镜像体积</li>
-<li>package.json提前，在没有修改得情况是不会重新安装npm包的，会减少部署时间</li>
-<li>npm i –production 生产环境不打包测试环境的包</li>
+<li>统计信息：CPU、内存</li>
+<li>事件循环：nextTick</li>
+<li>异常捕获：uncaughtException</li>
+<li>其他：进程、I/O、路径</li>
 </ol>
-<h3 id="构建和部署"><a href="#构建和部署" class="headerlink" title="构建和部署"></a>构建和部署</h3><pre><code class="bash">docker build -t heshuai326/server:latest .
-# docker commit -a &quot;heshuai326&quot; -m &quot;latest&quot; 31f397f03bf1 server:latest
-docker tag ddf287a62df5  heshuai326/server:latest
-docker push heshuai326/server:latest
+<h3 id="子进程的实现"><a href="#子进程的实现" class="headerlink" title="子进程的实现"></a>子进程的实现</h3><ol>
+<li><p>主进程</p>
+<pre><code class="bash">const child_process = require(&#39;child_process&#39;)
+const child = child_process.fork(&#39;./child.js&#39;)
+child.on(&#39;message&#39;, function(m){
+ console.log(&#39;来自子进程的消息&#39;, m)
+})
+child.send({ from: &#39;父进程消息&#39;})</code></pre>
+</li>
+<li><p>子进程<br>子进程是一个独立的V8实例，可以在进程中做一些耗时操作，然后在通知主进程</p>
+<pre><code class="bash">process.on(&#39;message&#39;, function(m){
+ console.log(&#39;来自父进程的消息&#39;, m)
+})
+const exec = require(&#39;child_process&#39;).exec
+exec(&#39;ls process.js&#39;, function(err, stdout, stderr){
+ console.log(stdout)
+ console.log(stderr)
+ process.send({stdout:stdout, stderr: stderr })
+})</code></pre>
+</li>
+</ol>
+<h2 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h2><p>单个Node.js实例运行在单个线程中。为了充分利用多个系统，又是需要启动一组Node.js进程去处理负载任务。</p>
+<h3 id="cluster模块"><a href="#cluster模块" class="headerlink" title="cluster模块"></a>cluster模块</h3><p>Node.js提供了集群模块，简单讲就是复制一些可以共享TCP连接的工作线程。<br>工作进程由child_process.fork()方法创建，因此它们可以使用IPC和父进程通信，从而使各进程交替处理连接服务。</p>
+<pre><code class="bash">const cluster = require(&#39;cluster&#39;);
+const http = require(&#39;http&#39;);
+const numCPUs = require(&#39;os&#39;).cpus().length;
 
-docker pull heshuai326/server:latest
-docker run -p 3000:3000 heshuai326/server:latest</code></pre>
-<h2 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker-compose"></a>docker-compose</h2><h3 id="什么是docker-compose"><a href="#什么是docker-compose" class="headerlink" title="什么是docker-compose"></a>什么是docker-compose</h3><p>docker-compose是一个用户定义和运行多个容器的Docker应用程序。在Compose中你可以使用YAML文件来配置你的应用服务。<br>然后只需要一个简单的命令就可以创建并启动你配置的所有服务。</p>
-<h3 id="启动命令"><a href="#启动命令" class="headerlink" title="启动命令"></a>启动命令</h3><pre><code class="bash">docker-compose up -d</code></pre>
-<p>-d参数是后台进行启动</p>
-<h3 id="mysql脚本"><a href="#mysql脚本" class="headerlink" title="mysql脚本"></a>mysql脚本</h3><pre><code class="bash">version: &#39;3.3&#39;
-services:
-  mysql:
-    image: mysql:5.6
-    volumes:
-      - /root/data/mysql:/var/lib/mysql
-      - ./conf/:/etc/mysql/conf.d
-    ports:
-      - &quot;3306:3306&quot;
-    environment:
-      - MYSQL_DATABASE=db
-      - MYSQL_ROOT_PASSWORD=123456
-volumes:
-  mysql:</code></pre>
-<h3 id="mongo和redis脚本"><a href="#mongo和redis脚本" class="headerlink" title="mongo和redis脚本"></a>mongo和redis脚本</h3><pre><code class="bash">version: &#39;3&#39;
-services:
-  mongo:
-    image: mongo:4.0.0
-    command: --bind_ip_all
-    restart: always
-    ports:
-    - &quot;27017:27017&quot;
-    volumes:
-    - &quot;mongo:/var/mongo&quot;
-  redis:
-    image: redis:4.0.8
-    restart: always
-    ports:
-    - &quot;6379:6379&quot;
-    volumes:
-    - &quot;redis:/var/redis&quot;
-volumes:
-  mongo:
-  redis:</code></pre>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://yeasy.gitbooks.io/docker_practice/introduction/what.html" target="_blank" rel="noopener">docker从入门到实践</a><br><a href="https://mp.weixin.qq.com/s/S7ksqF8z4SYJvcG1DOupNA" target="_blank" rel="noopener">nodejs技术栈docker入门到实践</a><br><a href="https://mp.weixin.qq.com/s/ZUw_qLk3m77ATkYXpfP08A" target="_blank" rel="noopener">nodejs技术栈Node.js服务 Docker 容器化应用实践</a></p>
+if (cluster.isMaster) {
+  console.log(`主进程 ${process.pid} 正在运行`);
 
+  // 衍生工作进程。
+  for (let i = 0; i &lt; numCPUs; i++) {
+    cluster.fork();
+  }
+
+  cluster.on(&#39;exit&#39;, (worker, code, signal) =&gt; {
+    console.log(`工作进程 ${worker.process.pid} 已退出`);
+  });
+} else {
+  // 工作进程可以共享任何 TCP 连接。
+  // 在本例子中，共享的是 HTTP 服务器。
+  http.createServer((req, res) =&gt; {
+    res.writeHead(200);
+    res.end(&#39;你好世界\n&#39;);
+  }).listen(8000);
+
+  console.log(`工作进程 ${process.pid} 已启动`);
+}</code></pre>
+<h3 id="cluster的两种分发连接方法"><a href="#cluster的两种分发连接方法" class="headerlink" title="cluster的两种分发连接方法"></a>cluster的两种分发连接方法</h3><ol>
+<li>循环法，由主进程负责监听端口，接收新连接后再将连接循环分发给工作进程，再分发中使用了一些内置技巧防止工作进程任务过载。</li>
+<li>主进程创建监听socket后发送给感兴趣的工作进程，由工作进程负责直接接收连接。</li>
+</ol>
+<h3 id="PM2"><a href="#PM2" class="headerlink" title="PM2"></a>PM2</h3><ol>
+<li>集群模式启动<pre><code class="bash">pm2 start app.js -i 4</code></pre>
+</li>
+</ol>
+<p>-i参数告诉pm2以cluster_mode的形式运行你的app（对应的叫fork_mode），后面的数字表示要启动的工作线程的数量。如果给定的数字为0，pm2则会根据你的CPU核心的数量来生成对应的工作线程。<br>2. 实时扩展集群</p>
+<pre><code class="bash">pm2 scale app +3</code></pre>
+<p>需要增加工作线程的数量，可以同pm2来对集群进程扩展</p>
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><h3 id="thread"><a href="#thread" class="headerlink" title="thread"></a>thread</h3><p>Node.js由于Javascript执行在单一线程，导致CPU密集计算的任务可能会使主线程处于繁忙的状态，进而影响服务的性能，虽然可以通过child_process模块创建子进程的方式来解决，但是一方面进程之间无法共享内存，另一方面创建进程的开销也不小。</p>
+<pre><code class="bash">const {
+  Worker, isMainThread, parentPort, workerData
+} = require(&#39;worker_threads&#39;);
+
+if (isMainThread) {
+  module.exports = function parseJSAsync(script) {
+    return new Promise((resolve, reject) =&gt; {
+      const worker = new Worker(__filename, {
+        workerData: script
+      });
+      worker.on(&#39;message&#39;, resolve);
+      worker.on(&#39;error&#39;, reject);
+      worker.on(&#39;exit&#39;, (code) =&gt; {
+        if (code !== 0)
+          reject(new Error(`Worker stopped with exit code ${code}`));
+      });
+    });
+  };
+} else {
+  const { parse } = require(&#39;some-js-parsing-library&#39;);
+  const script = workerData;
+  parentPort.postMessage(parse(script));
+}</code></pre>
+<h3 id="真正的多线程——node-threads-a-gogo"><a href="#真正的多线程——node-threads-a-gogo" class="headerlink" title="真正的多线程——node-threads-a-gogo"></a>真正的多线程——<a href="https://github.com/xk/node-threads-a-gogo" target="_blank" rel="noopener">node-threads-a-gogo</a></h3><h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><h3 id="其他数据库"><a href="#其他数据库" class="headerlink" title="其他数据库"></a>其他数据库</h3><h3 id="I-O密集型和CPU密集型"><a href="#I-O密集型和CPU密集型" class="headerlink" title="I/O密集型和CPU密集型"></a>I/O密集型和CPU密集型</h3>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 2313843501@qq.com </span>
     </div>
@@ -463,12 +459,12 @@ volumes:
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>docker</p>
+    <p><span class="copy-title">文章标题:</span>Node.js如何成为高并发的神器</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="heshuai">heshuai</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-10-09, 15:31:54</p>
-    <p><span class="copy-title">最后更新:</span>2019-10-09, 17:38:40</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/10/09/docker/" title="docker">https://heshuai326.github.io/2019/10/09/docker/</a>
+    <p><span class="copy-title">发布时间:</span>2019-10-21, 10:01:17</p>
+    <p><span class="copy-title">最后更新:</span>2019-10-21, 15:00:34</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/10/21/Node-js如何成为高并发的神器/" title="Node.js如何成为高并发的神器">https://heshuai326.github.io/2019/10/21/Node-js如何成为高并发的神器/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
