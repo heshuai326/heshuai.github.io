@@ -103,32 +103,47 @@ pm2 scale app +3
 Node.js由于Javascript执行在单一线程，导致CPU密集计算的任务可能会使主线程处于繁忙的状态，进而影响服务的性能，虽然可以通过child_process模块创建子进程的方式来解决，但是一方面进程之间无法共享内存，另一方面创建进程的开销也不小。
 ```bash
 const {
-  Worker, isMainThread, parentPort, workerData
-} = require('worker_threads');
+    isMainThread, parentPort, workerData, threadId,
+    MessageChannel, MessagePort, Worker
+} = require('worker_threads')
+
+function mainThread() {
+    const worker = new Worker(__filename, { workerData: 0 })
+
+    worker.on('exit', code => {
+        console.log(`main：工作线程退出 ${code}`)
+    })
+    worker.on('message', msg => {
+        console.log(`main: receive ${msg}`)
+        worker.postMessage(msg + 1)
+    })
+}
+
+function workerThread() {
+    console.log(`worker: threadId ${threadId} 启动 ${__filename}`)
+    console.log(`worker: workerDate ${workerData} `)
+    parentPort.on('message', msg => {
+        console.log(`worder: 收到${msg}`)
+        if (msg === 5) {
+            process.exit()
+        }
+        parentPort.postMessage(msg)
+    })
+    parentPort.postMessage(workerData)
+
+}
 
 if (isMainThread) {
-  module.exports = function parseJSAsync(script) {
-    return new Promise((resolve, reject) => {
-      const worker = new Worker(__filename, {
-        workerData: script
-      });
-      worker.on('message', resolve);
-      worker.on('error', reject);
-      worker.on('exit', (code) => {
-        if (code !== 0)
-          reject(new Error(`Worker stopped with exit code ${code}`));
-      });
-    });
-  };
+    mainThread()
 } else {
-  const { parse } = require('some-js-parsing-library');
-  const script = workerData;
-  parentPort.postMessage(parse(script));
+    workerThread()
 }
 ```
 ### 真正的多线程——[node-threads-a-gogo](https://github.com/xk/node-threads-a-gogo)
 
 ## 数据库
+
 ### Redis
+
 ### 其他数据库
 ### I/O密集型和CPU密集型
